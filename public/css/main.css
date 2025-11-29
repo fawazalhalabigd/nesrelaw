@@ -344,9 +344,9 @@ color: #5865F2;
         height: auto !important;
     }
     .card1{
-        width: 70vw !important;
-        margin-left: 10vw;
-        margin-right: 10vw;
+        width: 85vw !important;
+        margin-left: 5vw;
+        margin-right: 5vw !important;
     }
 
     .row {
