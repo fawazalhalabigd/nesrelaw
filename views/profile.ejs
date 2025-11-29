@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <%- include("shared/widget/navbar.ejs") %>
+        <br>
+        <br>
+        <div class="profile-header">
+            <img class="avatar" src="<%= picture %>" alt="">
+            <h2><%= name %> <span class="verifiedAccount"><i class="fas fa-check"></i></span></h2>
+            <p><%= email %></p>
+            <hr class="footer-hr">
+        </div>
+
+
+
+        
+        <section class="section4">
+            <br>
+            <h2>تغيير الحساب</h2>
+            <div class="w-50 section1-hr h-auto">.</div>
+            <div class="loginContainer">
+                <a href="/auth/google">
+                    <button class="login-btn google">
+                        <span>سجل دخول عن طريق غوغل</span>
+                        <img src="images/icons8-google-48.png" width="30" style="border-radius: 100%;">
+                    </button>
+                </a>
+
+
+                <a href="/auth/github">
+                    <button class="login-btn github">
+                        سجل دخول عن طريق غيت هاب
+                        <img src="images/icons8-github-50.png" width="30">
+                    </button>
+                </a>
+
+
+                <a href="https://discord.com/oauth2/authorize?client_id=1439227525288034426&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fdiscord%2Fcallback&scope=identify+email">
+                    <button class="login-btn discord">
+                        سجل دخول عن طريق ديسكورد
+                        <img src="images/icons8-discord-48.png" width="30">
+                    </button>
+                </a>
+            </div>
+            <Br>
+
+                
+            
+            <Br>
+        </section>
+
+        <section class="section4">
+            <br>
+            <h2>حميع الاسئلة التي طرحتها</h2>
+            <div class="w-50 section1-hr h-auto">.</div>
+            <div class="loginContainer">
+                    <h2>اعلان</h2>
+                    
+                <% ques.forEach((element,index) => { %>
+                    
+                    <div class="alert alert-dark">
+                        <%= element.quesText %><br><% if (element.ansrText == null) { %>
+                            <strong>لايوجد اجابة</strong>
+                        <% } else {%>
+                            
+                            <br><strong>الجواب</strong><br><%- element.ansrText %>
+                        <% } %>
+                    </div>
+                    <% if ((index + 1) % 4 === 0) { %> 
+                        <h2>اعلان</h2>
+                    <% } %>
+                <% }) %>
+            </div>
+            <Br>
+
+                
+            
+            <Br>
+        </section>
+        <a href="/"><button type="button" class="card1-button1" style="border-radius: 10px;">عودة الى الصفحة الرئيسية</button></a> 
+        <Br>
+        <Br>
+        <Br>
+
+        <!-- <div style="position: absolute; bottom: 0;right: 0;left: 0;"> -->
+            <%- include("shared/widget/footer.ejs") %>
+        <!-- </div> -->
+    </body>
+</html>
+
+<style>
+    .avatar{
+        border-radius: 100%;
+        width: 7em;
+        height: 7em;
+    }
+    .profile-stats div {
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <%- include("shared/widget/navbar.ejs") %>
+        <!-- --------------------------------------------------------------------------------------------------------- -->
+        <!-- imort -->
+        <!-- finish this later -->
+        <form action="/ask" method="post">
+            <div class="mb-3 mt-3">
+                <input type="email" value="<%=email %>">
+                <label class="form-label">اضف سؤالك:</label>
+                <textarea class="form-control" id="ques"  name="quesText" style="width: 80vw; margin-right: 10vw;margin-left: 10vw;height: 40vh;
+    direction: ltr;"></textarea>
+            </div>
+            <button type="submit" class="btn button1">اضف سؤالك</button>
+            <style>
+                .button1{
+
+                    width: 80vw; 
+                    margin-right: 10vw;
+                    margin-left: 10vw;
+                    background-color:var(--color3);
+                    color:var(--color2);
+                    border: 3px transparent solid;
+            
+                }
+                .button1:hover{
+                    background-color:var(--color2);
+                    color:var(--color1);
+                    border: 3px var(--color1) solid;
+
+                }
+            </style>
+        </form>
+
+
+
+        <div style="position: absolute; bottom: 0;right: 0;left: 0;">
+            <%- include("shared/widget/footer.ejs") %>
+        </div>
+
+    </body>
+</html>
+
+

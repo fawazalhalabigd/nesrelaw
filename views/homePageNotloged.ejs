@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+
+        <%- include("shared/widget/navbarNotloged.ejs") %>
+        <!-- https://images.cdn-files-a.com/ready_uploads/media/189816/2000_5ced08a28fba4.jpg -->
+        <%- include("shared/pages/homePage.ejs") %>
+
+        <section class="section4">
+            <br>
+            <h2>انضم الينا</h2>
+            <div class="w-50 section1-hr h-auto">.</div>
+            <div class="loginContainer">
+                <a href="/auth/google">
+                    <button class="login-btn google">
+                        <span>سجل دخول عن طريق غوغل</span>
+                        <img src="images/icons8-google-48.png" width="30" style="border-radius: 100%;">
+                    </button>
+                </a>
+
+
+                <a href="/auth/github">
+                    <button class="login-btn github">
+                        سجل دخول عن طريق غيت هاب
+                        <img src="images/icons8-github-50.png" width="30">
+                    </button>
+                </a>
+
+
+                <a href="https://discord.com/oauth2/authorize?client_id=1439227525288034426&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fdiscord%2Fcallback&scope=identify+email">
+                    <button class="login-btn discord">
+                        سجل دخول عن طريق ديسكورد
+                        <img src="images/icons8-discord-48.png" width="30">
+                    </button>
+                </a>
+            </div>
+            <Br>
+            <Br>
+        </section>
+
+        
+        <%- include("shared/widget/footer.ejs") %>
+
+
+    </body>
+</html>
+
+<div class="toast show" style="position: fixed;bottom: 10px;right: 10px;">
+  <div class="toast-header" style="text-align: center;padding-right: 30px;">
+    ملاحظة
+    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+  </div>
+  <div class="toast-body">
+    لاتنسى ان تسجل دخول في الموقع
+
+  </div>
+</div>

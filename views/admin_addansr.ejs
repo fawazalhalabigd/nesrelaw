@@ -1,0 +1,96 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="css/main.css">
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+        
+    </head>
+    <body style="background-color: var(--color4) !important;">
+        <%- include("shared/widget/navbar.ejs") %>
+        <div style="background-color: #fff;">
+            <br>
+            <br>
+            <a href="/admin"><label class="form-label">عودة الى صفحة الادمن</label><br></a>
+            <form action="/admin/question/no_anser/<%=ques.id %>" method="post"dir="ltr">
+                <div class="mb-3 mt-3">
+                    <label class="form-label">اضف الجواب:</label><br>
+                    <textarea readonly type="email" style="width: 80vw; margin-right: 10vw;margin-left: 10vw;height: 20vh;direction: ltr;"><%=ques.quesText %></textarea>
+                    <textarea id="summernote" name="ansrText"></textarea>
+                    <script>
+                    $('#summernote').summernote({
+                        placeholder: 'اكتب نص الجواب هنا ...',
+                        tabsize: 2,
+                        height: 500,
+                        toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link']],
+                        ['view', [ 'codeview', 'help']]
+                        ]
+                    });
+                    </script>
+                </div>
+                <button type="submit" class="btn button1">اضف الجواب</button>
+                <style>
+                    .button1{
+
+                        width: 80vw; 
+                        margin-right: 10vw;
+                        margin-left: 10vw;
+                        background-color:var(--color3);
+                        color:var(--color2);
+                        border: 3px transparent solid;
+                
+                    }
+                    .button1:hover{
+                        background-color:var(--color2);
+                        color:var(--color1);
+                        border: 3px var(--color1) solid;
+
+                    }
+                </style>
+            </form>
+            <br>
+        </div>
+        <%- include("shared/widget/footer.ejs") %>
+    </body>
+</html>
+
+
+
+<style>
+    .a {
+        display: inline-block;
+    }
+    .box{
+        border-radius: 20px;
+        border: gray 2px solid;
+        margin: 10px;
+        width: 80vw;
+        margin-right: 10vw;
+        max-height: 20em;
+        overflow: hidden;
+    }
+    .box:hover{
+        background-color: gray;
+        color: white;
+        border-radius: 20px;
+        border: rgb(255, 255, 255) 2px solid;
+        margin: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-right: 10vw;
+    }
+</style>

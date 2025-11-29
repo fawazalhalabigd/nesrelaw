@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="css/main.css">
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+        
+    </head>
+    <body style="background-color: var(--color4) !important;">
+        <%- include("shared/widget/navbar.ejs") %>
+        <div style="background-color: #fff;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3>جميع الاسئلة التي لم يجب عليها</h3>
+            <u><a href="/admin">عودة ←</a></u>
+            <h1>لم انتهي  من برمجة هذا القسم</h1>
+            <div class="col">
+                <% ques.forEach(element => { %>
+                    
+                    <a>
+                        <div class="box">
+                            <textarea readonly style="font-size: medium;height: 5vh;width: 100%;"><%= element.quesText %> </textarea><br>
+                            <a href="/admin/question/no_anser/<%= element.id %>" class="btn button1">اجب على السؤال</a>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <%- include("shared/widget/footer.ejs") %>
+    </body>
+</html>
+
+
+
+<style>
+    .a {
+        display: inline-block;
+    }
+    .box{
+        border-radius: 20px;
+        border: gray 2px solid;
+        margin: 10px;
+        width: 80vw;
+        margin-right: 10vw;
+        max-height: 20em;
+        overflow: hidden;
+    }
+    .box:hover{
+        background-color: gray;
+        color: white;
+        border-radius: 20px;
+        border: rgb(255, 255, 255) 2px solid;
+        margin: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-right: 10vw;
+    }
+</style>

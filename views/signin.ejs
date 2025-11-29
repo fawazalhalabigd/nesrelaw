@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navBarHere">
+            <div class="container-fluid">
+                <h1>قلم نسرين القانوني</h1>
+
+                
+            <!-- Toggler button (mobile menu button) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <br>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/">الصفحة الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/login">تسجيل دخول</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+        <section class="section4">
+            <br>
+            <h2>انضم الينا</h2>
+            <div class="w-50 section1-hr h-auto">.</div>
+            <div class="loginContainer">
+                <a href="/auth/google">
+                    <button class="login-btn google">
+                        <span>سجل دخول عن طريق غوغل</span>
+                        <img src="images/icons8-google-48.png" width="30" style="border-radius: 100%;">
+                    </button>
+                </a>
+
+
+                <a href="/auth/github">
+                    <button class="login-btn github">
+                        سجل دخول عن طريق غيت هاب
+                        <img src="images/icons8-github-50.png" width="30">
+                    </button>
+                </a>
+
+
+                <a href="https://discord.com/oauth2/authorize?client_id=1439227525288034426&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fdiscord%2Fcallback&scope=identify+email">
+                    <button class="login-btn discord">
+                        سجل دخول عن طريق ديسكورد
+                        <img src="images/icons8-discord-48.png" width="30">
+                    </button>
+                </a>
+            </div>
+            <Br>
+            <Br>
+        </section>
+        <section class="footer" style="position: absolute; bottom: 0;">
+            <span class="footer-title">2025 قلم نسرين القانوني - جميع الحقوق محفوظة<span><br>
+            <hr class="footer-hr">
+            <div class="footer-btn-group">
+                <div class="footer-btn nav-item">الصفحة الرئيسية</div>
+                <div class="footer-btn nav-item">الخدمات</div>
+                <div class="footer-btn nav-item ">المقالات</div>
+                <div class="footer-btn nav-item">تواصل معنا</div>
+            </div>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body style="background-color: var(--color4) !important;;">
+        <%- include("shared/widget/navbar.ejs") %>
+        <div style="background-color: #fff;">
+            <!-- https://images.cdn-files-a.com/ready_uploads/media/189816/2000_5ced08a28fba4.jpg -->
+            <br>
+            <h1>صفحة الادمن</h1>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <h3>عدد الاسئلة التي لم يجب عليها</h3>
+                    <h3><%= quesNotAnserNum %></h3>
+
+                </div>
+                <div class="col">
+                    <h3>عدد الاسئلة الكلي</h3>
+                    <h3><%= quesNum %></h3>
+
+                </div>
+                <div class="col">
+                    <h3>عدد المستخدمين الكلي</h3>
+                    <h3><%= userNum %></h3>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <h1>خيارات</h1>
+            <br>
+            <div class="row">
+                <a href="/admin/del/post">
+                    <div class="col box">
+                        <br>
+                        <h3>حذف بوست</h3>
+                        <br>
+                    </div>
+                </a>
+                <a href="/admin/new/post">
+                    <div class="col box">
+                        <br>
+                        <h3>نشر بوست جديد</h3>
+                        <br>
+                    </div>
+                </a>
+                <a href="/admin/question/no_anser">
+                    <div class="col box">
+                        <br>
+                        <h3>اجابة على الاسئلة</h3>
+                        <br>
+
+                    </div>
+                </a>
+                <a href="/admin/allusers">
+                    <div class="col box">
+                        <br>
+                        <h3>مشاهدة ججميع المستخدمين</h3>
+                        <br>
+
+                    </div>
+                </a>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <%- include("shared/widget/footer.ejs") %>
+    </body>
+</html>
+
+
+
+<style>
+    .a {
+        display: inline-block;
+    }
+    .box{
+        border-radius: 20px;
+        border: gray 2px solid;
+        margin: 10px;
+        width: 80vw;
+        margin-right: 10vw;
+        max-height: 20em;
+    }
+    .box:hover{
+        background-color: gray;
+        color: white;
+        border-radius: 20px;
+        border: rgb(255, 255, 255) 2px solid;
+        margin: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-right: 10vw;
+    }
+</style>

@@ -1,0 +1,361 @@
+
+
+:root {
+    --color1:rgb(60, 61, 62);
+    --color2:rgb(240, 248, 255);
+    --color3:#B27C31;
+    --color4:#1C1A1B;
+    --color5:#ababab;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+* {
+    font-family: "Noto Kufi Arabic", sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+
+
+/* ============ Navbar ============ */
+nav h1 {
+    font-size: 23px;
+    font-weight: bold;
+    color: var(--color2);
+    margin: 0;
+}
+
+.navBarHere {
+    background-color: var(--color1) !important;
+    margin: 0;
+}
+
+.nav-link {
+    color: var(--color2) !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color5) !important;
+}
+
+/* ============ card1 ============ */
+
+.card1{
+    box-shadow: 0px 0px 24px 0px #0000004a;
+    border-radius: 25px;
+    overflow: hidden;
+}
+.card1:hover{
+    box-shadow: 0px 0px 24px 0px #000000;
+}
+.card1-img{
+    width: 100%;
+}
+.card1-button1{
+    font-size: 1.5em;
+    font-weight: bold;
+    border: none;
+    background-color: var(--color3);
+    color: var(--color2);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px 10px 0 0;
+    border: 3px transparent solid;
+}
+.card1-button1:hover{
+    
+    background-color: var(--color2);
+    color: var(--color3);
+    border: 3px var(--color3) solid;
+}
+.card1-title{
+    font-size: 2em;
+}
+
+@media (max-width: 992px) {
+    .card1-title{
+        font-size: larger;
+    }
+    .card1-p{
+        font-size: small;
+    }
+}
+.card1-p{
+    font-size: smaller;
+}
+
+/* ============ Footer ============ */
+.footer {
+    padding-top: 2vh;
+    background-color: var(--color4) !important;
+    color: var(--color2);
+    margin-bottom: 0;
+    min-height: 25vh;
+    width: 100%;
+}
+
+.footer-btn {
+    color: var(--color5);
+    border: none;
+    background: none;
+    display: inline-block !important;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+    font-size: small;
+}
+
+.footer-btn:hover {
+    color: var(--color2);
+}
+
+.footer-hr {
+    width: 50%;
+    border-color: var(--color5);
+    margin-right: 25%;
+}
+.footer-title{
+    font-size: large;
+}
+
+.footer-btn-group{
+    text-align: center !important;
+    width: 100%;
+}
+
+a {
+text-decoration: none;
+}
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.2s;
+}
+
+
+/*  Login Buttons */
+.loginContainer {
+    width: 50vw;
+    margin-right: 25vw;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .loginContainer {
+        width: 80vw;
+        margin-right: 10vw;
+    }
+}
+/* Google */
+.google {
+background: #db4437;
+border-color: #db4437;
+}
+.google:hover {
+background: #fff;
+color: #db4437;
+}
+
+
+/* GitHub */
+.github {
+background: #24292e;
+border-color: #24292e;
+}
+.github:hover {
+background: #fff;
+color: #24292e;
+}
+
+
+/* Discord */
+.discord {
+background: #5865F2;
+border-color: #5865F2;
+}
+.discord:hover {
+background: #fff;
+color: #5865F2;
+}
+
+/* ============ section 1 ============ */
+
+.section1{
+    background-color: #eee;
+}
+.section1 .img {
+    width: 100%;
+
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center !important;
+    margin-right: 25%;
+}
+
+
+.section1-hr{
+    width: 30% !important;
+    color: var(--color3);
+    background-color: var(--color3);
+    margin-right: 35%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    user-select:none; 
+    height: 10px !important;
+    overflow: hidden;
+}
+
+
+/* ============ section 2 ============ */
+.section2{
+    background-color: #fff;
+}
+
+.section2-hr{
+    width: 10% !important;
+    color: var(--color3);
+    background-color: var(--color3);
+    margin-right: 45%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    user-select:none; 
+    height: 2px !important;
+    overflow: hidden;
+
+}
+/* ============ section 3 ============ */
+.section3{
+    background-color: #eee;
+}
+.section3 .img {
+    width: 100%;
+
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.col {
+    flex: 1 1 300px;
+    width: 350px;
+}
+
+@media (max-width: 992px) {
+    .col{
+        
+        width: 90vw;
+    }
+}
+.section3-hr{
+    width: 30% !important;
+    color: var(--color3);
+    background-color: var(--color3);
+    margin-right: 35%;
+    margin-left: 35%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    user-select:none; 
+    height: 10px !important;
+    overflow: hidden;
+}
+
+
+/* ============ section 4 ============ */
+.section4{
+    background-color: #fff;
+}
+/* ============ Responsive Design ============ */
+@media (max-width: 992px) {
+    nav h1 {
+        font-size: 20px;
+    }
+    .footer {
+        min-height: 30vh;
+    }
+    .col{
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .navBarHere {
+        text-align: center;
+    }
+
+    nav h1 {
+        margin: 10px auto;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* .col {
+        width: 90% !important;
+        margin-right: 5%;
+        margin-left: 5%;
+    } */
+    .footer-title{
+        font-size: 20px;
+    }
+    .card1{
+    }
+
+}
+
+@media (max-width: 480px) {
+    nav h1 {
+        font-size: 18px;
+    }
+    .footer-title{
+        font-size: 15px;
+    }
+    .col{
+        text-align: center !important;
+        width: 100vw !important;
+        height: auto !important;
+    }
+    .card1{
+        width: 70vw !important;
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+br {
+    user-select: none;
+}

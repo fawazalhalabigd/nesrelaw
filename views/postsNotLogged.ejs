@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body style="background-color: var(--color4) !important;">
+            <%- include("shared/widget/navbarNotloged.ejs") %>
+        <section style="background-color: white !important;">
+            <br>
+            <br>
+            <br>
+            <!-- https://images.cdn-files-a.com/ready_uploads/media/189816/2000_5ced08a28fba4.jpg -->
+            <% posts.forEach((element,index) => { %>
+                <h2>اعلان</h2>
+                <div class="post">
+                    <!-- <div class="publisher">
+                        <img src="logo.png" alt="" style="width:30px;background-color: #ffffff;" class="rounded-pill">
+                        User123 <span class="verified"><i class="far fa-check-circle"></i></span>
+                    </div> -->
+                    <h2><%= element.title %></h2>
+                    <p><%-element.text %></p>
+                    </div>
+                </div>
+                <% if ((index + 1) % 4 === 0) { %> 
+                    <h2>اعلان</h2>
+                <% } %>
+            <% }) %>
+            
+            <% if(posts.lenght ==0){ %>
+                <h2>لايوجد مقالات بعد!</h2>
+            <% } %>
+            <br>
+            <br>
+        </section>
+        <%- include("shared/widget/footer.ejs") %>
+
+    </body>
+</html>
+
+<div class="toast show" style="position: fixed;bottom: 10px;right: 10px;">
+  <div class="toast-header" style="text-align: center;padding-right: 30px;">
+    ملاحظة
+    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+  </div>
+  <div class="toast-body">
+    لاتنسى ان تسجل دخول في الموقع
+
+  </div>
+</div>
+<style>
+    .post{
+        
+        box-shadow: 0px 0px 14px 0px #575757;
+        padding: 10px;
+        background-color: #eee;
+        margin: 10px;
+        margin-left: 10vw;
+        margin-right: 10vw;
+        border-radius: 15px;
+    }
+
+    .ad-post {
+        background-color: #fff !important;
+        border: 2px solid #ddd;
+        text-align: center;
+    }
+
+    .ad-box {
+        margin-top: 10px;
+        padding: 10px;
+        background: #fdfdfd;
+    }
+</style>

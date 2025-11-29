@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body style="background-color: var(--color4) !important;">
+            <%- include("shared/widget/navbar.ejs") %>
+        <section style="background-color: white !important;">
+            <br>
+            <br>
+            <h2>اعلان</h2>
+            <br>
+            <!-- https://images.cdn-files-a.com/ready_uploads/media/189816/2000_5ced08a28fba4.jpg -->
+            <% ques.forEach((element,index) => { %>
+                <div class="post">
+                    
+                    <!-- <div class="publisher">
+                        <img src="logo.png" alt="" style="width:30px;background-color: #ffffff;" class="rounded-pill">
+                        User123 <span class="verified"><i class="far fa-check-circle"></i></span>
+                    </div> -->
+                    
+                    <%= element.quesText %><br><% if (element.ansrText == null) { %>
+                        <strong>لايوجد اجابة</strong>
+                    <% } else {%>
+                        
+                        <br><strong>الجواب</strong><br><%- element.ansrText %>
+                    <% } %>
+                    </div>
+                </div>
+                <% if ((index + 1) % 4 === 0) { %> 
+                    <br><h2>اعلان</h2><br>
+                <% } %>
+                
+            <% }) %>
+            
+            <% if(ques.lenght ==0){ %>
+                <h2>لايوجد اسئلة بعد!</h2>
+            <% } %>
+            <br>
+            <br>
+        </section>
+        <%- include("shared/widget/footer.ejs") %>
+
+    </body>
+</html>
+
+
+<style>
+    .post{
+        
+        box-shadow: 0px 0px 14px 0px #575757;
+        padding: 10px;
+        background-color: #eee;
+        margin: 10px;
+        margin-left: 10vw;
+        margin-right: 10vw;
+        border-radius: 15px;
+    }
+
+    .ad-post {
+        background-color: #fff !important;
+        border: 2px solid #ddd;
+        text-align: center;
+    }
+
+    .ad-box {
+        margin-top: 10px;
+        padding: 10px;
+        background: #fdfdfd;
+    }
+</style>
