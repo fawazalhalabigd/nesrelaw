@@ -58,7 +58,8 @@
             <h2>حميع الاسئلة التي طرحتها</h2>
             <div class="w-50 section1-hr h-auto">.</div>
             <div class="loginContainer">
-                    <h2>اعلان</h2>
+                <%- include("shared/ads/nativeBanner.ejs") %>
+
                     
                 <% ques.forEach((element,index) => { %>
                     
@@ -71,7 +72,9 @@
                         <% } %>
                     </div>
                     <% if ((index + 1) % 4 === 0) { %> 
-                        <h2>اعلان</h2>
+                        
+                        <%- include("shared/ads/nativeBanner.ejs") %>
+
                     <% } %>
                 <% }) %>
             </div>
@@ -87,6 +90,10 @@
         <Br>
 
         <!-- <div style="position: absolute; bottom: 0;right: 0;left: 0;"> -->
+            
+        <%- include("shared/ads/nativeBanner.ejs") %>                    
+        <%- include("shared/ads/popunder.ejs") %>
+
             <%- include("shared/widget/footer.ejs") %>
         <!-- </div> -->
     </body>

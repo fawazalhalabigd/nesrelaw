@@ -14,18 +14,23 @@
             <br>
             <!-- https://images.cdn-files-a.com/ready_uploads/media/189816/2000_5ced08a28fba4.jpg -->
             <% posts.forEach((element,index) => { %>
-                <h2>اعلان</h2>
+                                    <%- include("shared/ads/nativeBanner.ejs") %>
+
                 <div class="post">
                     <!-- <div class="publisher">
                         <img src="logo.webp" alt="" style="width:30px;background-color: #ffffff;" class="rounded-pill">
                         User123 <span class="verified"><i class="far fa-check-circle"></i></span>
                     </div> -->
                     <h2><%= element.title %></h2>
-                    <p><%-element.text %></p>
-                    </div>
+                    <%-element.text %>
+                    <br>
+                    <button style="border-radius: 20px;" type="button" class="card1-button1" onclick="copyInput('https:/\/nesrenlaw.com/posts/<%= element.id %>')">
+                        <h2> شارك المقالة</h2>
+                    </button>
                 </div>
                 <% if ((index + 1) % 4 === 0) { %> 
-                    <h2>اعلان</h2>
+                                        <%- include("shared/ads/nativeBanner.ejs") %>
+
                 <% } %>
             <% }) %>
             
@@ -35,6 +40,11 @@
             <br>
             <br>
         </section>
+        <script>
+            function copyInput(text) {
+                navigator.clipboard.writeText(text);
+            }
+        </script>
         <%- include("shared/widget/footer.ejs") %>
 
     </body>

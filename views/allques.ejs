@@ -31,7 +31,9 @@
                     </div>
                 </div>
                 <% if ((index + 1) % 4 === 0) { %> 
-                    <br><h2>اعلان</h2><br>
+                    <%- include("shared/ads/nativeBanner.ejs") %>                    
+                    <%- include("shared/ads/popunder.ejs") %>
+
                 <% } %>
                 
             <% }) %>
@@ -42,6 +44,9 @@
             <br>
             <br>
         </section>
+        <%- include("shared/ads/nativeBanner.ejs") %>                    
+        <%- include("shared/ads/popunder.ejs") %>
+
         <%- include("shared/widget/footer.ejs") %>
 
     </body>

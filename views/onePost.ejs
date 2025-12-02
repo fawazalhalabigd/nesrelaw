@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <%- include("shared/widget/header.ejs") %>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body style="background-color: var(--color4) !important;">
+            <%- include("shared/widget/navbar.ejs") %>
+
+
+        <div class="post">
+            <!-- <div class="publisher">
+                <img src="logo.webp" alt="" style="width:30px;background-color: #ffffff;" class="rounded-pill">
+                User123 <span class="verified"><i class="far fa-check-circle"></i></span>
+            </div> -->
+            <h2><%= element.title %></h2>
+            <%-element.text %>
+            <br>    
+            <button style="border-radius: 20px;" type="button" class="card1-button1" onclick="copyInput('https:/\/nesrenlaw.com/posts/<%= element.id %>')">
+                <h2> شارك المقالة</h2>
+            </button>
+            <script>
+                function copyInput(text) {
+                    navigator.clipboard.writeText(text);
+                }
+            </script>
+        </div>
+
+        <%- include("shared/widget/footer.ejs") %>
+
+    </body>
+</html>
+
+
+<style>
+    .post{
+        
+        box-shadow: 0px 0px 14px 0px #575757;
+        padding: 10px;
+        background-color: #eee;
+        margin: 10px;
+        margin-left: 10vw;
+        margin-right: 10vw;
+        border-radius: 15px;
+    }
+
+    .ad-post {
+        background-color: #fff !important;
+        border: 2px solid #ddd;
+        text-align: center;
+    }
+
+    .ad-box {
+        margin-top: 10px;
+        padding: 10px;
+        background: #fdfdfd;
+    }
+</style>

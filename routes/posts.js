@@ -46,6 +46,60 @@ router.get("/posts",async (req, res) => {
     }
 });
 
+router.get("/posts/:id",async (req, res) => {
+    
+    
+    if (req.cookies.email && req.cookies.name && req.cookies.picture){
+        let email = req.cookies.email;
+        let name = req.cookies.name;
+        let picture = req.cookies.picture;
+        
+        // let [ques] = await db.query("SELECT * FROM ques WHERE email = ? AND ansrText IS NULL;",[email]);
+        let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND();",);
+        if (posts[req.params.id]){
+            return res.render(
+                "onePosts.ejs",
+                {
+                    "email":email,
+                    "name":name,
+                    "picture":picture,
+                    "posts":posts[req.params.id]
+                }
+            );
+        } else {
+            return res.render(
+                "onePosts.ejs",
+                {
+                    "email":email,
+                    "name":name,
+                    "picture":picture,
+                    "posts":posts
+                }
+            );
+        }
+
+    }else {
+        let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND();",);
+
+        if (posts[req.params.id]){
+            return res.render(
+                "posts.ejs",
+                {
+                    "posts":posts[req.params.id]
+                }
+            );
+        } else {
+            return res.render(
+                "postsNotLogged.ejs",
+                {
+                    "posts":posts
+                }
+            );
+        }
+
+    }
+});
+
 router.get("/ques",async (req, res) => {
     
         
