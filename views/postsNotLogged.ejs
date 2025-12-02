@@ -26,6 +26,7 @@
                     <br>    
                     <button style="border-radius: 20px;" type="button" class="card1-button1" onclick="copyInput('https:/\/nesrenlaw.com/posts/<%= element.id %>')">
                         <h2> شارك المقالة</h2>
+                        <h6>عن طريق نس الرابط</h6>
                     </button>
                 </div>
                 <% if ((index + 1) % 4 === 0) { %> 
@@ -42,23 +43,15 @@
         <script>
             function copyInput(text) {
                 navigator.clipboard.writeText(text);
+                alert("تم نسخ الرابط " + text);
             }
         </script>
         <%- include("shared/widget/footer.ejs") %>
 
+        <%- include("shared/widget/toast1.ejs") %>
     </body>
 </html>
 
-<div class="toast show" style="position: fixed;bottom: 10px;right: 10px;">
-  <div class="toast-header" style="text-align: center;padding-right: 30px;">
-    ملاحظة
-    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-  </div>
-  <div class="toast-body">
-    لاتنسى ان تسجل دخول في الموقع
-
-  </div>
-</div>
 <style>
     .post{
         
