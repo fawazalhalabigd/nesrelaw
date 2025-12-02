@@ -6,26 +6,35 @@
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body style="background-color: var(--color4) !important;">
+        <% if (email) { %>
             <%- include("shared/widget/navbar.ejs") %>
+         
+        <% } else {%>
+            <%- include("shared/widget/navbarNotloged.ejs") %>
 
 
-        <div class="post">
-            <!-- <div class="publisher">
-                <img src="logo.webp" alt="" style="width:30px;background-color: #ffffff;" class="rounded-pill">
-                User123 <span class="verified"><i class="far fa-check-circle"></i></span>
-            </div> -->
-            <h2><%= element.title %></h2>
-            <%-element.text %>
-            <br>    
-            <button style="border-radius: 20px;" type="button" class="card1-button1" onclick="copyInput('https:/\/nesrenlaw.com/posts/<%= element.id %>')">
-                <h2> شارك المقالة</h2>
-            </button>
-            <script>
-                function copyInput(text) {
-                    navigator.clipboard.writeText(text);
-                }
-            </script>
-        </div>
+        <% } %>
+
+
+        <section style="background-color: white !important;">
+            <div class="post">
+                <!-- <div class="publisher">
+                    <img src="logo.webp" alt="" style="width:30px;background-color: #ffffff;" class="rounded-pill">
+                    User123 <span class="verified"><i class="far fa-check-circle"></i></span>
+                </div> -->
+                <h2><%= [posts.title] %></h2>
+                <%-[posts.text] %>
+                <br>    
+                <button style="border-radius: 20px;" type="button" class="card1-button1" onclick="copyInput('https:/\/nesrenlaw.com/posts/<%= posts.id %>')">
+                    <h2> شارك المقالة</h2>
+                </button>
+                <script>
+                    function copyInput(text) {
+                        navigator.clipboard.writeText(text);
+                    }
+                </script>
+            </div>
+        </section>
 
         <%- include("shared/widget/footer.ejs") %>
 

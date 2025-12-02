@@ -35,7 +35,7 @@ router.get("/posts",async (req, res) => {
             }
         );
     }else {
-        let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND();",);
+        let [posts] = await db.query("SELECT * FROM `posts`;",);
         return res.render(
             "postsNotLogged.ejs",
             {
@@ -55,44 +55,46 @@ router.get("/posts/:id",async (req, res) => {
         let picture = req.cookies.picture;
         
         // let [ques] = await db.query("SELECT * FROM ques WHERE email = ? AND ansrText IS NULL;",[email]);
-        let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND();",);
-        if (posts[req.params.id]){
+        let [posts] = await db.query("SELECT * FROM `posts` WHERE id = ?;",(req.params.id));
+        if (posts){
             return res.render(
-                "onePosts.ejs",
+                "onePost.ejs",
                 {
                     "email":email,
                     "name":name,
                     "picture":picture,
-                    "posts":posts[req.params.id]
+                    "posts":posts[0]
                 }
             );
         } else {
             return res.render(
-                "onePosts.ejs",
+                "erorr.ejs",
                 {
-                    "email":email,
-                    "name":name,
-                    "picture":picture,
-                    "posts":posts
+                    "title":"404 ERORR",
+                    "desc":"لا يوجد مقالة بهذا العنوان"
                 }
             );
         }
 
     }else {
-        let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND();",);
+        let [posts] = await db.query("SELECT * FROM `posts` WHERE id = ?;",(req.params.id));
 
-        if (posts[req.params.id]){
+        if (posts){
             return res.render(
-                "posts.ejs",
+                "onePost.ejs",
                 {
-                    "posts":posts[req.params.id]
+                    "email":null,
+                    "name":null,
+                    "picture":null,
+                    "posts":posts[0]
                 }
             );
         } else {
             return res.render(
-                "postsNotLogged.ejs",
+                "erorr.ejs",
                 {
-                    "posts":posts
+                    "title":"404 ERORR",
+                    "desc":"لا يوجد مقالة بهذا العنوان"
                 }
             );
         }
