@@ -22,10 +22,10 @@
                     <img src="logo.webp" alt="" style="width:30px;background-color: #ffffff;" class="rounded-pill">
                     User123 <span class="verified"><i class="far fa-check-circle"></i></span>
                 </div> -->
-                <h2><%= [posts.title] %></h2>
-                <%-[posts.text] %>
+                <h2><%= [posts].title %></h2>
+                <%-[posts].text %>
                 <br>    
-                <button style="border-radius: 20px;" type="button" class="card1-button1" onclick="copyInput('https:/\/nesrenlaw.com/posts/<%= posts.id %>')">
+                <button style="border-radius: 20px;" type="button" class="card1-button1" onclick="copyInput('https:/\/nesrenlaw.com/posts/<%= [posts].id %>')">
                     <h2> شارك المقالة</h2>
                 </button>
                 <script>
