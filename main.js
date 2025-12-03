@@ -56,6 +56,42 @@ app.use('/', require('./routes/posts.js'));
 //   res.status(404).render("404")
 // });
 
+// google-site-verification=06mhtTRlL-cfkAxrOy3f_Nze3embvf8ZQjS4h-jqQVw
+
+const { SitemapStream, streamToPromise } = require('sitemap');
+const { createGzip } = require('zlib');
+
+
+// Your website pages
+const links = [
+  { url: '/', changefreq: 'daily', priority: 1.0 },
+  { url: '/about', changefreq: 'monthly', priority: 0.8 },
+  { url: '/contact', changefreq: 'monthly', priority: 0.8 },
+  // Add your legal articles here
+  { url: '/articles/register-company', changefreq: 'weekly', priority: 0.9 },
+  { url: '/articles/real-estate-law', changefreq: 'weekly', priority: 0.9 },
+];
+
+app.get('/sitemap.xml', async (req, res) => {
+  try {
+    res.header('Content-Type', 'application/xml');
+    res.header('Content-Encoding', 'gzip');
+
+    const smStream = new SitemapStream({ hostname: 'https://nesrenlaw.com/' });
+    const pipeline = smStream.pipe(createGzip());
+
+    links.forEach(link => smStream.write(link));
+    smStream.end();
+
+    const sitemap = await streamToPromise(pipeline);
+    res.send(sitemap);
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
+});
+
+
 app.use((req, res) => {
     res.status(404).render(
         "erorr.ejs",
