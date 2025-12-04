@@ -28,7 +28,7 @@ router.get("/posts",async (req, res) => {
             index = 0;
         }
         // let [ques] = await db.query("SELECT * FROM ques WHERE email = ? AND ansrText IS NULL;",[email]);
-        let [posts] = await db.query("SELECT * FROM `posts` LIMIT 4 OFFSET ?;",[ Number( index || 0) * 4]);
+        let [posts] = await db.query("SELECT * FROM `posts` ORDER BY id DESC LIMIT 4 OFFSET ?;",[ Number( index || 0) * 4]);
         return res.render(
             "posts.ejs",
             {
@@ -44,7 +44,7 @@ router.get("/posts",async (req, res) => {
         if (Number.isNaN(index) || index < 0) {
             index = 0;
         }
-        let [posts] = await db.query("SELECT * FROM `posts` OLIMIT 4 OFFSET ?;",[Number( index || 0)* 4],);
+        let [posts] = await db.query("SELECT * FROM `posts` ORDER BY id DESC OLIMIT 4 OFFSET ?;",[Number( index || 0)* 4],);
         return res.render(
             "postsNotLogged.ejs",
             {
