@@ -146,7 +146,7 @@
         <% posts.forEach((element,index) => { %>
 
             
-            <div class="carousel-item active"><div class="d-flex justify-content-center align-items-center" style="background-color:#f8f9fa; padding: 20px;min-height: 400px;">
+            <div class="carousel-item active"><div class="d-flex justify-content-center align-items-center" style="background-color:#f8f9fa; padding: 20px;min-height: 400px;max-height: 600px;overflow-y: hidden;">
 
                     <div class="post" style="margin-left: 5vw;margin-right: 5vw;">
                         <!-- <div class="publisher">
@@ -156,6 +156,9 @@
                         <br>
                         <h2><%= element.title %></h2>
                         <%-element.text %>
+                        <br>
+                        
+                        <u><a href="https:/\/nesrenlaw.com/posts/<%= element.id %>">اكمل القراءة ←</a></u>
                         <br>
                     </div>
                 </div>
