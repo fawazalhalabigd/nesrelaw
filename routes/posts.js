@@ -22,24 +22,34 @@ router.get("/posts",async (req, res) => {
         let email = req.cookies.email;
         let name = req.cookies.name;
         let picture = req.cookies.picture;
+        let index = Number(req.query.index);
         
+        if (Number.isNaN(index) || index < 0) {
+            index = 0;
+        }
         // let [ques] = await db.query("SELECT * FROM ques WHERE email = ? AND ansrText IS NULL;",[email]);
-        let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND();",);
+        let [posts] = await db.query("SELECT * FROM `posts` LIMIT 4 OFFSET ?;",[ Number( index || 0) * 4]);
         return res.render(
             "posts.ejs",
             {
                 "email":email,
                 "name":name,
                 "picture":picture,
-                "posts":posts
+                "posts":posts,
+                "index":index
             }
         );
     }else {
-        let [posts] = await db.query("SELECT * FROM `posts`;",);
+        let index = Number(req.query.index);
+        if (Number.isNaN(index) || index < 0) {
+            index = 0;
+        }
+        let [posts] = await db.query("SELECT * FROM `posts` OLIMIT 4 OFFSET ?;",[Number( index || 0)* 4],);
         return res.render(
             "postsNotLogged.ejs",
             {
-                "posts":posts
+                "posts":posts,
+                "index":index
             }
         );
 
@@ -118,7 +128,7 @@ router.get("/ques",async (req, res) => {
                 "email":email,
                 "name":name,
                 "picture":picture,
-                "ques":ques
+                "ques":ques,
             }
         );
     }else {

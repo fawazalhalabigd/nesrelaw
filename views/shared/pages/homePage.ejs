@@ -1,4 +1,9 @@
 
+        
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <section class="section1">
     <br>
@@ -134,6 +139,46 @@
 
 <% } %>
 
+
+
+<div id="textCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+        <% posts.forEach((element,index) => { %>
+
+            
+            <div class="carousel-item active"><div class="d-flex justify-content-center align-items-center" style="background-color:#f8f9fa; padding: 20px;min-height: 400px;">
+
+                    <div class="post" style="margin-left: 10vw;margin-right: 10vw;">
+                        <!-- <div class="publisher">
+                            <img src="logo.webp" alt="" style="width:30px;background-color: #ffffff;" class="rounded-pill">
+                            User123 <span class="verified"><i class="far fa-check-circle"></i></span>
+                        </div> -->
+                        <br>
+                        <h2><%= element.title %></h2>
+                        <%-element.text %>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            
+        <% }) %>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#textCarousel" data-bs-slide="prev">
+        <i class=" carousel-control-icon" style="font-size: 5rem; color: var(--color3) !important;"><span class="glyphicon glyphicon-chevron-left"></span></i>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#textCarousel" data-bs-slide="next">
+        <i class="carousel-control-icon" style="font-size: 5rem; color: var(--color3) !important;"><span class="glyphicon glyphicon-chevron-right"></span></i>
+    </button>
+
+    
+    <br>
+    <a href="/posts"><button type="button" class="card1-button1" style="border-radius: 20px;">تصفح جميع المقالات!</button></a>
+    <br>
+    <br>
+    <br>
+</div>
 
 <section class="section3">
     <br>

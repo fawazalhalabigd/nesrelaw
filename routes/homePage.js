@@ -1,11 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db');
 // const Product = require('../models/Posts.js');
 const cookieParser = require("cookie-parser");
 
+const mysql = require("mysql2/promise");
+require("dotenv").config();
+const db = mysql.createPool({
+      host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+
+});
 router.get("",async (req, res) => {
     
+    let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND() LIMIT 3;",);
+
         
     if (req.cookies.email && req.cookies.name && req.cookies.picture){
         
@@ -19,6 +32,7 @@ router.get("",async (req, res) => {
                 "email":email,
                 "name":name,
                 "picture":picture,
+                "posts":posts
             }
         );
     }else {
@@ -28,6 +42,7 @@ router.get("",async (req, res) => {
                 "email":"null",
                 "name":"null",
                 "picture":"null",
+                "posts":posts
             }
         );
 
@@ -38,6 +53,8 @@ router.get("",async (req, res) => {
 router.post("",async (req, res) => {
     
         
+    let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND() LIMIT 3;",);
+
     if (req.cookies.email && req.cookies.name && req.cookies.picture){
         
         let email = req.cookies.email;
@@ -50,6 +67,7 @@ router.post("",async (req, res) => {
                 "email":email,
                 "name":name,
                 "picture":picture,
+                "posts":posts
             }
         );
     }else {
@@ -59,6 +77,7 @@ router.post("",async (req, res) => {
                 "email":"null",
                 "name":"null",
                 "picture":"null",
+                "posts":posts
             }
         );
 

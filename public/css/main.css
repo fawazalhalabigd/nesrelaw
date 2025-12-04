@@ -359,3 +359,20 @@ color: #5865F2;
 br {
     user-select: none;
 }
+
+
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-control-icon{
+    
+    border-radius: 100px;
+    
+}

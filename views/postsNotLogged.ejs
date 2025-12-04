@@ -38,6 +38,28 @@
                 <h2>لايوجد مقالات بعد!</h2>
             <% } %>
             <br>
+            <div class="row" style="text-align: center;" dir="ltr">
+                <% if (index > 1) { %>
+                    
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index -1 %>" style="color: var(--color3);">عودة</a></li>
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index - 1 %>" style="color: var(--color3);"><%= index - 1 %></a></li>
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index %>" style="background-color: var(--color3) !important;color: var(--color2);"><%= index %></a></li>
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index  + 1 %>" style="color: var(--color3);"><%= index + 1%></a></li>
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index + 1 %>" style="color: var(--color3);">تقدم</a></li>
+                    </ul>
+                <% } else { %>
+
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index %>" style="background-color: var(--color3) !important;color: var(--color2);"><%= index %></a></li>
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index + 1 %>"  style="color: var(--color3);"><%= index +1 %></a></li>
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index + 2 %>" style="color: var(--color3);"><%= index +2 %></a></li>
+                        <li class="page-item"><a class="page-link" href="/posts?index=<%= index + 1 %>" style="color: var(--color3);">تقدم</a></li>
+                    </ul>
+
+                <% } %>
+            </div>
+            <br>
             <br>
         </section>
         <script>
@@ -46,6 +68,7 @@
                 alert("تم نسخ الرابط " + text);
             }
         </script>
+
         <%- include("shared/widget/footer.ejs") %>
 
         <%- include("shared/widget/toast1.ejs") %>
@@ -74,5 +97,13 @@
         margin-top: 10px;
         padding: 10px;
         background: #fdfdfd;
+    }
+    @media (max-width: 768px) {
+        .post {
+            margin: 10px;
+            margin-left: 0vw;
+            margin-right: 0vw;
+            border-radius: 15px;
+        }
     }
 </style>
