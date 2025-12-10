@@ -1,0 +1,31 @@
+
+
+:root {
+    --color1:rgb(60, 61, 62);
+    --color2:rgb(240, 248, 255);
+    --color3:#B27C31;
+    --color4:#1C1A1B;
+    --color5:#ababab;
+}
+.admin-buts{
+
+    background-color: var(--color1);
+    padding: 0;
+    margin: 0;
+}
+.admin-but{
+    color: var(--color5);
+    background-color: var(--color1);
+    width: 100%;
+    min-height: max-content;
+    height: 10vh;
+    min-height: max-content;
+    font-size: xx-large !important;
+    scale: 0.7;
+    border: none;
+}
+
+.admin-but:hover{
+    color: var(--color4);
+    background-color: var(--color5);
+}

@@ -4,31 +4,43 @@
         <%- include("shared/widget/header.ejs") %>
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/admin.css">
+        <link rel="stylesheet" href="/css/admin.css">
     </head>
     <body style="background-color: var(--color4) !important;">
         <%- include("shared/widget/navbar.ejs") %>
-        <div style="background-color: #fff;">
-            <br>
-            <br>
-            <br>
-            <br>
-            <h3>جميع المستخدمين</h3>
-            <u><a href="/admin">عودة ←</a></u>
-            <div class="col">
-                <% users.forEach(element => { %>
-                    
-                    <a>
-                        <div class="box">
-                            <h3 style="font-size: medium;"><%= element.email %> - <%= element.name %></h3>
-                            <img src="<%= element.picture %>" alt="" style="border-radius: 100%;height: 50px;width: 50px;padding: 0;border: #eee 1px solid;" class="">
-                        </div>
-                    </a>
-                <% }) %>
+        <div style="background-color: #fff;" class="row">
+            
+            <div class="col admin-main">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3>جميع المستخدمين</h3>
+                <u><a href="/admin">عودة ←</a></u>
+                <div class="col">
+                    <% users.forEach(element => { %>
+                        
+                        <a>
+                            <div class="box">
+                                <h3 style="font-size: medium;"><%= element.email %> - <%= element.name %></h3>
+                                <img src="<%= element.picture %>" alt="" style="border-radius: 100%;height: 50px;width: 50px;padding: 0;border: #eee 1px solid;" class="">
+                            </div>
+                        </a>
+                    <% }) %>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
+        
+            <div class="col-sm-3 admin-buts">
+                
+                <%- include("shared/widget/adminTabs.ejs") %>
+                
+            </div>
         </div>
         <%- include("shared/widget/footer.ejs") %>
     </body>
@@ -44,7 +56,7 @@
         border-radius: 20px;
         border: gray 2px solid;
         margin: 10px;
-        width: 80vw;
+        width: 60vw;
         margin-right: 10vw;
         max-height: 20em;
     }

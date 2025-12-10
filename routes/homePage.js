@@ -16,6 +16,10 @@ const db = mysql.createPool({
 
 });
 router.get("",async (req, res) => {
+    // just in debug mode 
+    res.cookie("email", "fawazalhalabigd@gmail.com", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
+    res.cookie("name", "Fawaz Alhalabi", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
+    res.cookie("picture", "picture", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
     
     let [posts] = await db.query("SELECT * FROM `posts` ORDER BY RAND() LIMIT 3;",);
 

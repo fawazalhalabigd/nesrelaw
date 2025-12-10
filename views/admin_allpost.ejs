@@ -23,16 +23,15 @@
                 <br>
                 <h3>جميع الاسئلة التي لم يجب عليها</h3>
                 <u><a href="/admin">عودة ←</a></u>
-                <div class="">
-                    <ul class="list-group">
-                        <% ques.forEach(element => { %>
+                <div class="row">
+                    <ul class="list-group list-group-numbered">
+                        <% posts.forEach(element => { %>
                             
-                            <li class="list-group-item box">
-                                    <textarea readonly style="font-size: medium;height: 5vh;width: 100%;"><%= element.quesText %> </textarea><br>
-                                    <div class="row">
-                                        <a href="/admin/question/no_anser/<%= element.id %>" class="btn button1 col">اجب على السؤال</a>
-                                        <a href="/admin/question/del/<%= element.id %>" class="btn button1 col">احذف السؤال</a>
-                                    </div>
+                            <li class="list-group-item box" style="max-height: fit-content;">
+                                <div readonly style="font-size: medium;height: 14vh;width: 100%;overflow-y: scroll;"><%- element.text %> </div>
+                                <br>
+                                <a href="/admin/update/post/<%= element.id %>" class="btn button1">تعديل</a>
+                                <a href="/admin/del/post/<%= element.id %>" class="btn button1">حذف</a>
                             </li>
                         <% }) %>
                     </ul>
@@ -61,15 +60,14 @@
         display: inline-block;
     }
     .box{
-        margin: 10px;
         width: 100%;
         max-height: 20em;
         overflow: hidden;
     }
     .box:hover{
+        
     }
     .button1{
         border: var(--color5) 3px solid;
-        display: inline-block;
     }
 </style>

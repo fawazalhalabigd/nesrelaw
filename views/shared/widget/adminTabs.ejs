@@ -1,0 +1,71 @@
+
+<div class="col">
+    <a href="/admin">
+        <div class="row admin-but">
+            <br>
+            <h1 style="color: var(--color2);">خيارات</h1>
+            <hr style="color: var(--color2);">
+            <br>
+        </div>
+    </a>
+    <button class="admin-but" style="font-weight: bolder;" data-bs-toggle="collapse" data-bs-target="#tool">ادوات ←</button>
+    <div id="tool" class="collapse">
+        <a href="/admin/allusers">
+            <div class="row admin-but">
+                <h3> مشاهدة ججميع المستخدمين</h3>
+
+            </div>
+        </a>
+    </div>
+    <button class="admin-but" style="font-weight: bolder;" data-bs-toggle="collapse" data-bs-target="#ques">الاسئلة ←</button>
+    
+    <div id="ques" class="collapse">
+        <a href="/admin/question/no_anser">
+            <div class="row admin-but">
+                <h3>اجابة على الاسئلة</h3>
+            </div>
+        </a>
+        <a href="/admin/question/all">
+            <div class="row admin-but">
+                <h3>جميع الاسئلة</h3>
+            </div>
+        </a>
+    </div>
+    <button class="admin-but" style="font-weight: bolder;" data-bs-toggle="collapse" data-bs-target="#posts">بوستات ←</button>
+    
+
+
+    <div id="posts" class="collapse">
+        <a href="/admin/all/post">
+            <div class="row admin-but">
+                <h3>تعديل البوستات او حذفها</h3>
+            </div>
+        </a>
+        <a href="/admin/new/post">
+            <div class="row admin-but">
+                <h3>نشر بوست جديد</h3>
+            </div>
+        </a>
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+<style>
+    .button1{
+
+        width: 100%; 
+        background-color:var(--color3);
+        color:var(--color2);
+        border: 3px transparent solid;
+
+    }
+    .button1:hover{
+        background-color:var(--color2);
+        color:var(--color1);
+        border: 3px var(--color1) solid;
+
+    }
+</style>

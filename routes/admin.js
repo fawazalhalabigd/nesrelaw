@@ -155,6 +155,142 @@ router.post("/admin/new/post", async (req, res) => {
     return res.redirect("/admin/new/post");
 
 });
+
+// -------------------- all posts ----------------------
+router.get("/admin/all/post/", async (req, res) => {
+
+    // If no login cookie → instantly deny access
+    if (!req.cookies.email) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+
+    // Query super users table
+    let [superUsers] = await db.query("SELECT * FROM superUser");
+
+    // Check if cookie email exists inside superUser table
+    const userEmail = req.cookies.email.trim();
+    const isSuper = superUsers.some(row => row.email.trim() === userEmail);
+
+    if (!isSuper) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+
+    // Admin allowed → fetch all users
+    let [users] = await db.query("SELECT * FROM users");
+    let [posts] = await db.query("SELECT * FROM posts");
+
+    return res.render("admin_allpost.ejs", {
+        "email": userEmail,
+        "name": req.cookies.name,
+        "picture": req.cookies.picture,
+        "users": users,
+        "posts":posts,
+    });
+});
+
+// ------- update posts  ---------------
+
+
+router.get("/admin/update/post/:id", async (req, res) => {
+
+    // If no login cookie → instantly deny access
+    if (!req.cookies.email) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+
+    // Query super users table
+    let [superUsers] = await db.query("SELECT * FROM superUser");
+
+    // Check if cookie email exists inside superUser table
+    const userEmail = req.cookies.email.trim();
+    const isSuper = superUsers.some(row => row.email.trim() === userEmail);
+
+    if (!isSuper) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+
+    // Admin allowed → fetch all users
+    let [users] = await db.query("SELECT * FROM users");
+    let [posts] = await db.query("SELECT * FROM posts WHERE id = ?" , [req.params.id]);
+
+    if (!posts[0]){
+        
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد بوست بهذا العنوان",
+        });
+    }
+    return res.render("admin_updatepost.ejs", {
+        "email": userEmail,
+        "name": req.cookies.name,
+        "picture": req.cookies.picture,
+        "users": users,
+        "postsText":posts[0].text,
+        "postsTitle":posts[0].title,
+        "postsId":posts[0].id,
+    });
+});
+
+router.post("/admin/update/post/:id", async (req, res) => {
+
+    console.log(req.body);
+    // If no login cookie → instantly deny access
+    if (!req.cookies.email) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+
+    // Query super users table
+    let [superUsers] = await db.query("SELECT * FROM superUser");
+
+    // Check if cookie email exists inside superUser table
+    const userEmail = req.cookies.email.trim();
+    const isSuper = superUsers.some(row => row.email.trim() === userEmail);
+
+    if (!isSuper) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+    try{
+
+        const { title, text } = await req.body;
+        await db.query(`
+            UPDATE posts
+            SET title = ?, text = ?
+            WHERE id = ?;`, 
+            [title, text,req.params.id]
+        );
+        return res.redirect("/admin/update/post/" + req.params.id);
+    }catch (error){
+        
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "خطأ تقني" + error,
+        });
+    }
+
+});
+
+
+
+
+
 router.get("/admin/del/post", async (req, res) => {
 
     // If no login cookie → instantly deny access
@@ -182,7 +318,7 @@ router.get("/admin/del/post", async (req, res) => {
     // Admin allowed → fetch all users
     let [posts] = await db.query("SELECT * FROM posts");
 
-    return res.render("admin_delpost.ejs", {
+    return res.render("admin_allpost.ejs", {
         "email": userEmail,
         "name": req.cookies.name,
         "picture": req.cookies.picture,
@@ -317,6 +453,75 @@ router.post("/admin/question/no_anser/:id", async (req, res) => {
     await db.query("UPDATE ques SET ansrText = ? WHERE id = ?;",[req.body.ansrText,req.params.id]);
 
     return res.redirect("/admin/question/no_anser");
+
+});
+
+
+
+router.get("/admin/question/del/:id", async (req, res) => {
+
+    // If no login cookie → instantly deny access
+    if (!req.cookies.email) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+
+    // Query super users table
+    let [superUsers] = await db.query("SELECT * FROM superUser");
+
+    // Check if cookie email exists inside superUser table
+    const userEmail = req.cookies.email.trim();
+    const isSuper = superUsers.some(row => row.email.trim() === userEmail);
+
+    if (!isSuper) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+
+    const postId = req.params.id;
+    await db.query("DELETE FROM ques WHERE id = ?", [postId]);
+    res.redirect("");
+
+});
+
+
+
+router.get("/admin/question/all", async (req, res) => {
+
+    // If no login cookie → instantly deny access
+    if (!req.cookies.email) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+
+    // Query super users table
+    let [superUsers] = await db.query("SELECT * FROM superUser");
+
+    // Check if cookie email exists inside superUser table
+    const userEmail = req.cookies.email.trim();
+    const isSuper = superUsers.some(row => row.email.trim() === userEmail);
+
+    if (!isSuper) {
+        return res.render("erorr.ejs", {
+            title: "404 Error",
+            desc: "لا يوجد صفحة بهذا العنوان",
+        });
+    }
+    let [ques] = await db.query("SELECT * FROM ques ;");
+
+    return res.render("admin_quesansr.ejs",{
+        
+        "email": userEmail,
+        "name": req.cookies.name,
+        "picture": req.cookies.picture,
+        "ques":ques
+    });
 
 });
 module.exports = router;
