@@ -30,8 +30,11 @@
                             <li class="list-group-item box" style="max-height: fit-content;">
                                 <div readonly style="font-size: medium;height: 14vh;width: 100%;overflow-y: scroll;"><%- element.text %> </div>
                                 <br>
-                                <a href="/admin/update/post/<%= element.id %>" class="btn button1">تعديل</a>
-                                <a href="/admin/del/post/<%= element.id %>" class="btn button1">حذف</a>
+                                <div class="row">
+
+                                    <a href="/admin/update/post/<%= element.id %>" class="btn button1 col">تعديل</a>
+                                    <a href="/admin/del/post/<%= element.id %>" class="btn button1 col">حذف</a>
+                                </div>
                             </li>
                         <% }) %>
                     </ul>

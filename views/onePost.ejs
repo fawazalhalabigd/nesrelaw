@@ -8,22 +8,14 @@
         <meta http-equiv="refresh" content="900">
         <meta property="og:title" content="Nesrenlaw | افضل موقع قانون في سوريا">
         <meta property="og:description" content="<%= posts.title %>">
-        <meta property="og:image" content="https://nesrenlaw.com/images/img1.webp">
+        <meta property="og:image" content="https://nesrenlaw.com/images/img7.webp">
         <meta property="og:url" content="https://nesrenlaw.com">
         <meta property="og:type" content="website">
-
+        <%- include("shared/ads/popunder.ejs") %>
     </head>
     <body style="background-color: var(--color4) !important;">
         <%- include("shared/ads/socialbar.ejs") %>           
-        <% if (email) { %>
-            <%- include("shared/widget/navbar.ejs") %>
-         
-        <% } else {%>
-            <%- include("shared/widget/navbarNotloged.ejs") %>
-
-
-        <% } %>
-
+            <%- include("shared/widget/navbar.ejs") %>  
 
 
         <section style="background-color: white !important;">

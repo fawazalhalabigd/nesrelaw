@@ -1,0 +1,87 @@
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mainOfcanvas" aria-labelledby="mainOfcanvasLabel" data-bs-scroll="true" data-bs-backdrop="false" style="background-color: var(--color1);">
+  <div class="offcanvas-header row" style="width: 100%;">
+  </div>
+  <div class="offcanvas-body" >
+    <div class="">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="
+      font-size: x-large; color: var(--color2);margin-left: 20px;display: inline;background-color: var(--color2) !important;width: 30px;height: 30px;">
+      </button>
+      <div class="" id="mainOfcanvasLabel" style="font-size: x-large; color: var(--color2);display: inline;">قلم نسرين القانوني</div>
+    </div>
+    <br>
+    <br>
+    <ul class="list-group" dir="ltr">
+      <a href="/">
+        <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+          <i class="material-icons">home</i>
+          الصفحة الرئيسية
+          <span class="badge bg-primary rounded-pill" style="background-color: transparent !important;color: transparent !important;">0</span>
+        </li>
+      </a>
+      <a href="/posts">
+        <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+          <i class="material-icons">import_contacts</i>
+          تصفح المقالات
+          <span class="badge bg-primary rounded-pill" style="background-color: transparent !important;color: transparent !important;">0</span>
+        </li>
+      </a>
+      <!-- ---------------------------------------------- -->
+      <a href="/ques">
+        <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+          <i class="material-icons">chat</i>
+          تصفح الاسئلة
+          <span class="badge bg-primary rounded-pill" style="background-color: transparent !important;color: transparent !important;">0</span>
+        </li>
+      </a>
+      <!-- ---------------------------------------------- -->
+      <% if(typeof name !== 'undefined' && typeof picture !== 'undefined' && typeof email !== 'undefined'){ %>
+        
+        <a href="/ask">
+          <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+            <i class="material-icons">border_color</i>
+            قدم استشارتك القانونية
+            <span class="badge bg-danger rounded-pill">جديد</span>
+          </li>
+        </a>
+        <!-- ---------------------------------------------- -->
+        <a href="/me">
+          <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+            <i class="material-icons">person</i>
+            صفحة الشخصية
+            <span class="badge bg-danger rounded-pill"  style="background-color: transparent !important;color: transparent !important;">0</span>
+          </li>
+        </a>
+      <% } else {%>
+
+        <a  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+            <i class="material-icons">border_color</i>
+            قدم استشارتك القانونية
+            <span class="badge bg-danger rounded-pill">جديد</span>
+          </li>
+        </a>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            يجب ان تسجل دخول لتصتطيع استخدام هذه الميزة
+          </div>
+        </div>
+        <!-- ---------------------------------------------- -->
+        <a href="/login">
+          <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+            <i class="material-icons">person_add</i>
+            سجل دخول
+            <span class="badge bg-danger rounded-pill"  style="background-color: transparent !important;color: transparent !important;">0</span>
+          </li>
+        </a>
+        
+      <% } %>
+      <!-- ---------------------------------------------- -->
+    </ul>
+  </div>
+</div>
+
+

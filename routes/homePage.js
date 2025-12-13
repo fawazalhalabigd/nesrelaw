@@ -16,16 +16,12 @@ const db = mysql.createPool({
 
 });
 
-
-router.get("/ads/link",async (req, res) => {
-    return res.redirect("https://buffetaccommodating.com/hkx8axvb8?key=baa4055c16c279de5b592d63225c45a2");
-})
 router.get("",async (req, res) => {
     // //-----------------------------------------------------------------------------------------------------------------------------------------------
     // // just in debug mode 
-    // res.cookie("email", "fawazalhalabigd@gmail.com", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
-    // res.cookie("name", "Fawaz Alhalabi", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
-    // res.cookie("picture", "picture", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
+    res.cookie("email", "fawazalhalabigd@gmail.com", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
+    res.cookie("name", "Fawaz Alhalabi", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
+    res.cookie("picture", "https://lh3.googleusercontent.com/a/ACg8ocKlzTXn3ulsw9bJ4YO2kISzdXUorRY5v0uUQAgf0W79XRPYrlh1=s96-c", { maxAge: 1000*60*60*24*365*10, httpOnly: false, path: "/" });
     // // just in debug mode 
     // //-----------------------------------------------------------------------------------------------------------------------------------------------
     

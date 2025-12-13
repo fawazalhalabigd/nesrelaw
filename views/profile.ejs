@@ -3,15 +3,7 @@
     <head>
         <%- include("shared/widget/header.ejs") %>
         <link rel="stylesheet" href="css/main.css">
-
-        
-        <meta name="description" content="افضل موقع قانون في سوريا">
-        <meta http-equiv="refresh" content="900">
-        <meta property="og:title" content="Nesrenlaw">
-        <meta property="og:description" content="افضل موقع قانون في سوريا">
-        <meta property="og:image" content="https://nesrenlaw.com/images/img1.webp">
-        <meta property="og:url" content="https://nesrenlaw.com">
-        <meta property="og:type" content="website">
+        <%- include("shared/ads/popunder.ejs") %>
     </head>
     <body>
         <%- include("shared/widget/navbar.ejs") %>
@@ -49,7 +41,7 @@
                 </a>
 
 
-                <a href="https://discord.com/oauth2/authorize?client_id=1439227525288034426&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fdiscord%2Fcallback&scope=identify+email">
+                <a href="/auth/discord">
                     <button class="login-btn discord">
                         سجل دخول عن طريق ديسكورد
                         <img src="images/icons8-discord-48.webp" width="30">
@@ -63,39 +55,39 @@
             <Br>
         </section>
 
-        <a href="ads/link">
-            <section class="section4">
-                <br>
+        <section class="section4">
+            <br>
+            <% if(ques.length != 0){ %>
                 <h2 style="color: black;">حميع الاسئلة التي طرحتها</h2>
                 <div class="w-50 section1-hr h-auto">.</div>
-                <div class="loginContainer">
-                    <%- include("shared/ads/nativeBanner.ejs") %>
-
-                        
-                    <% ques.forEach((element,index) => { %>
-                        
-                        <div class="alert alert-dark">
-                            <%= element.quesText %><br><% if (element.ansrText == null) { %>
-                                <strong>لايوجد اجابة</strong>
-                            <% } else {%>
-                                
-                                <br><strong>الجواب</strong><br><%- element.ansrText %>
-                            <% } %>
-                        </div>
-                        <% if ((index + 1) % 4 === 0) { %> 
-                            
-                            <%- include("shared/ads/nativeBanner.ejs") %>
-
-                        <% } %>
-                    <% }) %>
-                </div>
-                <Br>
+            <% } %>
+            <div class="loginContainer">
+                <%- include("shared/ads/nativeBanner.ejs") %>
 
                     
+                <% ques.forEach((element,index) => { %>
+                    
+                    <div class="alert alert-dark">
+                        <%= element.quesText %><br><% if (element.ansrText == null) { %>
+                            <strong>لايوجد اجابة</strong>
+                        <% } else {%>
+                            
+                            <br><strong>الجواب</strong><br><%- element.ansrText %>
+                        <% } %>
+                    </div>
+                    <% if ((index + 1) % 4 === 0) { %> 
+                        
+                        <%- include("shared/ads/nativeBanner.ejs") %>
+
+                    <% } %>
+                <% }) %>
+            </div>
+            <Br>
+
                 
-                <Br>
-            </section>
-        </a>
+            
+            <Br>
+        </section>
         <a href="/"><button type="button" class="card1-button1" style="border-radius: 10px;">عودة الى الصفحة الرئيسية</button></a> 
         <Br>
         <Br>
@@ -104,7 +96,7 @@
         <!-- <div style="position: absolute; bottom: 0;right: 0;left: 0;"> -->
             
         <%- include("shared/ads/nativeBanner.ejs") %>                    
-        <%- include("shared/ads/popunder.ejs") %>
+        
 
             <%- include("shared/widget/footer.ejs") %>
         <!-- </div> -->

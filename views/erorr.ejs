@@ -4,31 +4,23 @@
         <%- include("shared/widget/header.ejs") %>
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="/css/main.css">
-        
-        <meta name="description" content="افضل موقع قانون في سوريا">
-        <meta http-equiv="refresh" content="900">
-        <meta property="og:title" content="Nesrenlaw">
-        <meta property="og:description" content="افضل موقع قانون في سوريا">
-        <meta property="og:image" content="https://nesrenlaw.com/images/img1.webp">
-        <meta property="og:url" content="https://nesrenlaw.com">
-        <meta property="og:type" content="website">
+        <%- include("shared/ads/popunder.ejs") %>
     </head>
     <body style="background-color: var(--color4) !important;">
         <section style="background-color: #fff;">
         <%- include("shared/ads/socialbar.ejs") %>           
-            <%- include("shared/widget/navbarNotloged.ejs") %>
+            <%- include("shared/widget/navbar.ejs") %>
             <br>
             <br>
             
             <h1><%= title %></h1>
             <h3><%= desc %></h3>
-            <a href="/ads/link"><h6>مزيد من التفاصيل</h6></a>
+            <h6>مزيد من التفاصيل</h6>
 
             <br>
             <br>
             <br>
-            <%- include("shared/ads/nativeBanner.ejs") %>                    
-            <%- include("shared/ads/popunder.ejs") %>
+            <%- include("shared/ads/nativeBanner.ejs") %>
         </section>
         <%- include("shared/widget/footer.ejs") %>
     </body>

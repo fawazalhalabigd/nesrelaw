@@ -66,7 +66,7 @@ router.get("/posts/:id",async (req, res) => {
         
         // let [ques] = await db.query("SELECT * FROM ques WHERE email = ? AND ansrText IS NULL;",[email]);
         let [posts] = await db.query("SELECT * FROM `posts` WHERE id = ?;",(req.params.id));
-        if (posts){
+        if (posts[0]){
             return res.render(
                 "onePost.ejs",
                 {
@@ -89,7 +89,7 @@ router.get("/posts/:id",async (req, res) => {
     }else {
         let [posts] = await db.query("SELECT * FROM `posts` WHERE id = ?;",(req.params.id));
 
-        if (posts){
+        if (posts[0]){
             return res.render(
                 "onePost.ejs",
                 {
