@@ -93,6 +93,15 @@ app.get('/sitemap.xml', async (req, res) => {
   }
 });
 
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send(
+    `User-agent: *
+    Allow: /
+    Sitemap: https://nesrenlaw.com/sitemap.xml`
+  );
+});
+
 
 app.use((req, res) => {
     res.status(404).render(
