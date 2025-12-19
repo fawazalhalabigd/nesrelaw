@@ -51,7 +51,9 @@ function first() {
       id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
       title VARCHAR(255) NOT NULL,
       text MEDIUMTEXT NOT NULL,
-      likes INT NOT NULL DEFAULT 0
+      likes INT NOT NULL DEFAULT 0,
+      listId INT NOT NULL DEFAULT 0,
+      catagory VARCHAR(255) NOT NULL
     );
   `, function (err) {
     if (err) throw err;

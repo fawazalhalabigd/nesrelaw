@@ -5,92 +5,91 @@ const path = require('path');
 const multer = require('multer');
 const sharp = require('sharp');
 
-const API_PASSWORD = 'Fawaz123456!#';
-const UPLOAD_DIR = path.join(__dirname, '../public/uploads');
+// ========================
+// ⚡ Config
+// ========================
+const UPLOAD_DIR = path.join(__dirname, '..', 'public', 'uploads');
 
-// Middleware للتحقق من كلمة السر
-function checkPassword(req, res, next) {
-  const pw = req.body && req.body.password;
-  if (!pw) return res.status(400).json({ error: "Password is required in request body." });
-  if (pw !== API_PASSWORD) return res.status(401).json({ error: "Unauthorized: wrong password." });
-  delete req.body.password;
-  next();
-}
+// Ensure upload directory exists
+if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
-// Multer للتخزين المؤقت
+// ========================
+// 🗂 Multer Setup
+// ========================
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-    cb(null, UPLOAD_DIR);
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname); // سنغير الاسم بعد المعالجة
-  }
+    destination: (req, file, cb) => cb(null, UPLOAD_DIR),
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        const tempName = `temp-${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`;
+        cb(null, tempName);
+    }
 });
 const upload = multer({ storage });
 
-// ===================================
-// 🟢 API رفع صورة + تحويل WebP
-// ===================================
-router.post('/image/upload', upload.single('photo'), async (req, res) => {
-  const pw = req.body && req.body.password;
-  if (!pw) return res.status(400).json({ error: "Password is required in request body." });
-  if (pw !== API_PASSWORD) return res.status(401).json({ error: "Unauthorized: wrong password." });
-  delete req.body.password;
+// ========================
+// 🚀 Routes
+// ========================
 
-  if (!req.file) return res.status(400).json({ error: "No file uploaded." });
-
-  try {
-    const files = fs.readdirSync(UPLOAD_DIR).filter(f => f.startsWith('photo-') && f.endsWith('.webp'));
-    const nextNumber = files.length + 1;
-    
-    const newName = `photo-${nextNumber}.webp`;
-    const newPath = path.join(UPLOAD_DIR, newName);
-
-    await sharp(req.file.path)
-      .webp({ quality: 70 })
-      .toFile(newPath);
-
-    fs.unlinkSync(req.file.path);
-
-    res.json({
-      message: "✅ Photo uploaded and converted to WebP successfully",
-      filename: newName,
-      path: `/uploads/${newName}`
-    });
-
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "Failed to process image." });
-  }
-});
-
-router.post('/image/delete', (req, res) => {
-  const pw = req.body && req.body.password;
-  if (!pw) return res.status(400).json({ error: "Password is required in request body." });
-  if (pw !== API_PASSWORD) return res.status(401).json({ error: "Unauthorized: wrong password." });
-
-  const number = req.body.number; // الرقم فقط كـ string
-  if (!number) return res.status(400).json({ error: "Number is required in body." });
-
-  // تحويل الرقم إلى اسم الملف الكامل
-  const filename = `photo-${number}.webp`;
-  const filePath = path.join(UPLOAD_DIR, filename);
-
-  fs.unlink(filePath, (err) => {
-    if (err) return res.status(500).json({ error: "Failed to delete file. Maybe it doesn't exist." });
-    res.json({ message: `🗑️ File ${filename} deleted successfully.` });
-  });
-});
-
-
+// GET - HTML Form for testing
 router.get('/image', (req, res) => {
-  return res.send(`
-    
-            <form action="/image/upload">
-                <input type="text" name="password">
-                <input type="image">
-            </form>
-    `)
+    res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload Image</title>
+    </head>
+    <body>
+        <h2>Upload Image</h2>
+        <form action="/image/upload" method="POST" enctype="multipart/form-data">
+            <label>Select image:</label><br>
+            <input type="file" name="photo" accept="image/*" required><br><br>
+            <button type="submit">Upload</button>
+        </form>
+    </body>
+    </html>
+    `);
 });
+
+// POST - Upload and convert image to WebP
+router.post('/image/upload', upload.single('photo'), async (req, res) => {
+    try {
+        if (!req.file) return res.status(400).json({ error: "No file uploaded." });
+
+        const files = fs.readdirSync(UPLOAD_DIR).filter(f => f.startsWith('photo-') && f.endsWith('.webp'));
+        const nextNumber = files.length + 1;
+        const newName = `photo-${nextNumber}.webp`;
+        const newPath = path.join(UPLOAD_DIR, newName);
+
+        await sharp(req.file.path)
+            .webp({ quality: 70 })
+            .toFile(newPath);
+
+        fs.unlinkSync(req.file.path);
+
+        res.json({
+            message: "✅ Photo uploaded and converted to WebP successfully",
+            filename: newName,
+            path: `/uploads/${newName}`
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// POST - Delete image by number
+router.post('/image/delete', (req, res) => {
+    const number = String(req.body.number);
+    if (!number) return res.status(400).json({ error: "Number is required." });
+
+    const filename = `photo-${number}.webp`;
+    const filePath = path.join(UPLOAD_DIR, filename);
+
+    fs.unlink(filePath, err => {
+        if (err) return res.status(500).json({ error: "Failed to delete file. Maybe it doesn't exist." });
+        res.json({ message: `🗑️ File ${filename} deleted successfully.` });
+    });
+});
+
 module.exports = router;

@@ -49,6 +49,7 @@ app.use('/', require('./routes/userAsk.js'));
 app.use('/', require('./routes/admin.js'));
 app.use('/', require('./routes/profile.js'));
 app.use('/', require('./routes/posts.js'));
+app.use('/', require('./routes/photoApi.js'));
 // app.use('/product', require('./routes/productPage.js'));
 // app.use('/api', require('./routes/appApi.js'));
 
@@ -66,6 +67,7 @@ const { createGzip } = require('zlib');
 const links = [
   { url: '/', changefreq: 'daily', priority: 1.0 },
   { url: '/about', changefreq: 'monthly', priority: 0.8 },
+  { url: '/contact', changefreq: 'monthly', priority: 0.8 },
   { url: '/contact', changefreq: 'monthly', priority: 0.8 },
   // Add your legal articles here
   { url: '/articles/register-company', changefreq: 'weekly', priority: 0.9 },
